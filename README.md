@@ -69,6 +69,8 @@ Asegúrate de tener instalados los siguientes componentes:
 
 3. Accede al panel de administración en `http://127.0.0.1:8000/admin` e inicia sesión con el superusuario que creaste anteriormente.
 
+4. (Opcional) Para acceder a la documentacion de swagger accede a la ruta: `http://127.0.0.1:8000/docs/swagger/`
+
 ## Autenticación
 
 Todos los endpoint estan protegidos mediante autenticación con token. Para crear un token, ingresa al panel de administración y agrega un token en el modulo Auth Token.
