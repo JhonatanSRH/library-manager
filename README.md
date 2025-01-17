@@ -69,6 +69,18 @@ Asegúrate de tener instalados los siguientes componentes:
 
 3. Accede al panel de administración en `http://127.0.0.1:8000/admin` e inicia sesión con el superusuario que creaste anteriormente.
 
+## Autenticación
+
+Todos los endpoint estan protegidos mediante autenticación con token. Para crear un token, ingresa al panel de administración y agrega un token en el modulo Auth Token.
+
+## Tests
+
+Se puede ejecutar todas las pruebas con el comando:
+
+    ```bash
+    python manage.py test apps.books.tests --settings=library_manager.settings.test
+    ```
+
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT.

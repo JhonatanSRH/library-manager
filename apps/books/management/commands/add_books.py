@@ -10,7 +10,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         """Inserta 5 documentos en la coleccion books"""
         # Configuracion de la conexion a MongoDB
-        db = settings.MONGO_CLIENT["LIBRARY"]
+        db = settings.MONGO_CLIENT[settings.MONGO_DB]
         books_collection = db['books']
         # Datos a insertar
         books = [

@@ -5,7 +5,8 @@ from pathlib import Path
 
 env = environ.Env(
     SECRET_KEY=(str, 'django-insecure-1234'),
-    MONGO_URI=(str, 'MONGO_URI')
+    MONGO_URI=(str, 'MONGO_URI'),
+    MONGO_DB=(str, 'LIBRARY'),
 )
 environ.Env.read_env()
 
@@ -116,6 +117,6 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
         'rest_framework.filters.SearchFilter',
     ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 10,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
 }

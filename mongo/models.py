@@ -4,7 +4,7 @@ from django.conf import settings
 from pymongo.collection import ObjectId
 from rest_framework.validators import ValidationError
 
-MONGO_DB = settings.MONGO_CLIENT["LIBRARY"]
+MONGO_DB = settings.MONGO_CLIENT[settings.MONGO_DB]
 
 error_messages = {
     'validation': 'Este %s tiene un formato invalido.'

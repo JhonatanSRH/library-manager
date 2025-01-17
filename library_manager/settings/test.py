@@ -3,15 +3,13 @@ from library_manager.settings.base import *
 from pymongo import MongoClient
 
 MONGO_CLIENT = MongoClient(env('MONGO_URI'))
-MONGO_DB = env('MONGO_DB')
+MONGO_DB = env('MONGO_DB') + '-TEST'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-
-DEBUG = True
+DEBUG = False
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': ':memory:',
     }
 }

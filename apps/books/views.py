@@ -1,10 +1,11 @@
 """Books app views."""
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from apps.books.models import BookModel
 from apps.books.serializers import BookSerializer
-
 from rest_framework import viewsets
+
 class BooksViewSet(viewsets.ViewSet):
     """Books ViewSet.
     Contiene los servicios para la interaccion con la coleccion books."""
@@ -12,7 +13,9 @@ class BooksViewSet(viewsets.ViewSet):
         """Lista todos los libros."""
         books = BookModel.all()
         serializer = BookSerializer(books, many=True)
-        return Response(serializer.data)
+        paginator = PageNumberPagination()
+        paginated_books = paginator.paginate_queryset(serializer.data, request)
+        return paginator.get_paginated_response(paginated_books)
 
     def create(self, request):
         """Inserta un libro."""
@@ -50,7 +53,7 @@ class BooksViewSet(viewsets.ViewSet):
             return Response({'error': 'Libro no encontrado.'}, status=404)
         book.delete()
         return Response(status=204)
-    
+
     @action(detail=False, methods=["get"], url_path="average-price")
     def average_price(self, request):
         """Obtiene el precio promedio segun el año indicado en parametros."""
