@@ -1,6 +1,7 @@
 """Django base settings for library_manager project."""
 
 import environ
+import os
 from pathlib import Path
 
 env = environ.Env(
@@ -100,6 +101,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Default primary key field type
 
